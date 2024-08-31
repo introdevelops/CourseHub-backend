@@ -47,7 +47,7 @@ mongoose
     console.log('connected to mongo');
   })
   .catch((e) => {
-    console.log('error in connecting to mongo');
+    console.log('error in connecting to mongo', e);
   });
 
 const COURSE_PROPS = [
@@ -375,6 +375,11 @@ app.get('/users', async (req, res) => {
 
   res.send(users);
 });
+
+app.get('/', (req, res) => {
+  res.send({ message: 'Welcome to the Course Hub Backend!' });
+});
+
 
 app.use('*', (req, res) => {
   res.status(404).send({ message: 'Route not found' });
